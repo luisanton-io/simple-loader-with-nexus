@@ -1,15 +1,13 @@
-import React from "react";
+import { loadingState } from "atoms/loadingState";
 import { Spinner } from "react-bootstrap";
 import { useRecoilValue } from "recoil";
-import { loadingState } from "atoms/loadingState";
 
 export default function Loader() {
     const loading = useRecoilValue(loadingState);
 
-    return loading ? (
-        <div className="text-center my-4">
+    return <div className="text-center my-4">
+        {loading && (
             <Spinner animation="border" variant="primary" />
-            <h5>Loading...</h5>
-        </div>
-    ) : null;
+        )}
+    </div>
 }
